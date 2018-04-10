@@ -19,7 +19,7 @@ from kivy.uix.slider import Slider
 
 from kivy.animation import Animation
 from kivy.properties import ListProperty, NumericProperty
-# from kivy.clock import Clock
+from kivy.clock import Clock
 from kivy.graphics import Color, Rectangle
 from kivy.metrics import dp, sp
 from kivy.core.window import Window
@@ -44,10 +44,10 @@ class speedoMeter(FloatLayout):
 
     def __init__(self, **kwargs):
         super(speedoMeter, self).__init__(**kwargs)
-        self.update, 0.2
+        Clock.schedule_interval(self.update, 0.1)
  
-    # def func(self):
-    #     self.ids['asdasdasd'].col = (0,1,0,1)
+    def func(self):
+        self.ids['asdasdasd'].col = (0,1,0,1)
 
     def update(self, dt):
         global speed
@@ -63,8 +63,8 @@ class speedoMeter(FloatLayout):
             with self.canvas:
                 Color(rgba=([1, 0, 0, 1]))
 
-        # if speed > 20:
-        #     self.color = [1,0,0]
+        if speed > 20:
+            self.color = [1,0,0]
 
 
         if speed > 98:
@@ -131,19 +131,30 @@ class brakeLever(FloatLayout):
 
     def __init__(self, **kwargs):
         super(brakeLever, self).__init__(**kwargs)
-        self.update, 1
+        Clock.schedule_interval(self.update, 1/2)
 
     def brakeRight(self, brakeNum):
-        breakLeverID = 'breakLeverRight_'+ str(brakeNum)
-        # self.ids[breakLeverID].x = 60 * brakeNum
-        breakLeverAnim = Animation(duration = .05 * brakeNum) + Animation(x = self.ids[breakLeverID].x+60, opacity = 1, duration = .5, t='in_out_quint') + Animation(x = 60 * brakeNum, opacity = .4, duration = .3, t='in_out_quint')
-        breakLeverAnim.start(self.ids[breakLeverID])
+        if brakeNum == 4:
+            breakLeverAnim = Animation(x = 213+30, duration = .2, t = 'in_out_quint') + Animation(x = 213, duration = .2, t = 'out_back')
+            breakLeverAnim.start(self.ids.breakLeverRight)
+
+        else:
+            breakLeverID = 'breakLeverRight_'+ str(brakeNum)
+            # self.ids[breakLeverID].x = 60 * brakeNum
+            breakLeverAnim = Animation(duration = .05 * brakeNum) + Animation(x = self.ids[breakLeverID].x+60, opacity = 1, duration = .5, t='in_out_quint') + Animation(x = 60 * brakeNum, opacity = .4, duration = .3, t='in_out_quint')
+            breakLeverAnim.start(self.ids[breakLeverID])
 
     def brakeLeft(self, brakeNum):
         breakLeverID = 'breakLeverLeft_'+ str(brakeNum)
-        # self.ids[breakLeverID].x = 60 * brakeNum
-        breakLeverAnim = Animation(duration = .05 * brakeNum) + Animation(x = self.ids[breakLeverID].x-60, opacity = 1, duration = .5, t='in_out_quint') + Animation(x = 60 * brakeNum, opacity = .4, duration = .3, t='in_out_quint')
-        breakLeverAnim.start(self.ids[breakLeverID])
+        if brakeNum == 4:
+            breakLeverAnim = Animation(x = -93-30, duration = .2, t = 'in_out_quint') + Animation(x = -93, duration = .2, t = 'out_back')
+            breakLeverAnim.start(self.ids.breakLeverLeft)
+
+        else:
+            # self.ids[breakLeverID].x = 60 * brakeNum
+            breakLeverAnim = Animation(duration = .05 * brakeNum) + Animation(x = self.ids[breakLeverID].x-60, opacity = 1, duration = .3, t='in_out_quint') + Animation(x = 60 * brakeNum, opacity = .4, duration = .2, t='in_out_quint')
+            breakLeverAnim.start(self.ids[breakLeverID])
+
 
     def update(self, dt):
 
@@ -155,6 +166,8 @@ class brakeLever(FloatLayout):
         self.brakeRight(2)
         self.brakeRight(3)
         self.brakeLeft(3)
+        self.brakeRight(4)
+        self.brakeLeft(4)
 
         if speed > 20: #if GPIO.input(leverLeft) == True:
             anim = Animation(y = 0, opacity = 1, duration = .5, t='in_out_quint')
@@ -163,7 +176,6 @@ class brakeLever(FloatLayout):
         else:
             anim = Animation(y = 10, opacity = 0, duration = .2, t='out_back')
             anim.start(self.ids['breakLeverMessage'])
-
 
 
 
