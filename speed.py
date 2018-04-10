@@ -44,7 +44,7 @@ class speedoMeter(FloatLayout):
 
     def __init__(self, **kwargs):
         super(speedoMeter, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, 0.06)
+        Clock.schedule_interval(self.update, 0.2)
  
     # def func(self):
     #     self.ids['asdasdasd'].col = (0,1,0,1)
@@ -63,8 +63,8 @@ class speedoMeter(FloatLayout):
             with self.canvas:
                 Color(rgba=([1, 0, 0, 1]))
 
-        if speed > 20:
-            self.color = [1,0,0]
+        # if speed > 20:
+        #     self.color = [1,0,0]
 
 
         if speed > 98:
@@ -131,7 +131,7 @@ class brakeLever(FloatLayout):
 
     def __init__(self, **kwargs):
         super(brakeLever, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, .5)
+        Clock.schedule_interval(self.update, 1)
 
     def brakeRight(self, brakeNum):
         breakLeverID = 'breakLeverRight_'+ str(brakeNum)
@@ -147,24 +147,22 @@ class brakeLever(FloatLayout):
 
     def update(self, dt):
 
-        # self.brakeRight(0)
-        # self.brakeLeft(0)
-        # self.brakeRight(1)
-        # self.brakeLeft(1)
-        # self.brakeLeft(2)
-        # self.brakeRight(2)
-        # self.brakeRight(3)
-        # self.brakeLeft(3)
+        self.brakeRight(0)
+        self.brakeLeft(0)
+        self.brakeRight(1)
+        self.brakeLeft(1)
+        self.brakeLeft(2)
+        self.brakeRight(2)
+        self.brakeRight(3)
+        self.brakeLeft(3)
 
         if speed > 20: #if GPIO.input(leverLeft) == True:
             anim = Animation(y = 0, opacity = 1, duration = .5, t='in_out_quint')
-            anim.start(self.ids['breaklever'])
-            leverLeft = False
+            anim.start(self.ids['breakLeverMessage'])
 
         else:
             anim = Animation(y = 10, opacity = 0, duration = .2, t='out_back')
-            anim.start(self.ids['breaklever'])
-            leverLeft = False
+            anim.start(self.ids['breakLeverMessage'])
 
 
 
