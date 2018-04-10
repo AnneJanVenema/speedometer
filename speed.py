@@ -1,5 +1,6 @@
 import kivy
-kivy.require('1.9.0')
+from kivy.clock import Clock
+# kivy.require('1.9.0')
 from kivy.config import Config
 Config.set('graphics', 'width', '480')
 Config.set('graphics', 'height', '800')
@@ -18,7 +19,6 @@ from kivy.uix.slider import Slider
 
 from kivy.animation import Animation
 from kivy.properties import ListProperty, NumericProperty
-from kivy.clock import Clock
 from kivy.graphics import Color, Rectangle
 from kivy.metrics import dp, sp
 from kivy.core.window import Window
