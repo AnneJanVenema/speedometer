@@ -1,0 +1,417 @@
+#:kivy 1.0
+#:import kivy kivy
+#:import win kivy.core.window
+
+<speedoMeter>
+    canvas:
+        Color:
+            rgb: self.color
+
+    Widget:
+        id: speedoMeterContainer
+        size_hint: None, None
+        size: 960/2, 660/2
+
+        RelativeLayout:
+            size_hint: 1, 1
+            pos: 0, 340
+            size: (self.width, 460)
+
+            Widget:
+                id: num_0
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_0.png'
+                        pos: 70, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num_1
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_1.png'
+                        pos: 70, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num_2
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_2.png'
+                        pos: 70, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num_3
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_3.png'
+                        pos: 70, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num_4
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_4.png'
+                        pos: 70, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num_5
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_5.png'
+                        pos: 70, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num_6
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_6.png'
+                        pos: 70, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num_7
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_7.png'
+                        pos: 70, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num_8
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_8.png'
+                        pos: 70, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num_9
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_9.png'
+                        pos: 70, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_0
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_10.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_1
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_1.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_2
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_2.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_3
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_3.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_4
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_4.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_5
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_5.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_6
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_6.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_7
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_7.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_8
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_8.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_9
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 0
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_9.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+            Widget:
+                id: num2_10
+                size_hint_y: 0
+                pos_hint: {'x': 0, 'center_y': .5}
+                size_hint: (None, None)
+                opacity: 1
+                canvas:
+                    Rectangle:
+                        source: 'assets/img/num_0.png'
+                        pos: 250, 0
+                        size: 312/2, 508/2
+
+<brakeLever>
+    RelativeLayout:
+        size_hint: 1, 1
+        pos: 0, 700
+        size: self.width, 100
+
+        Widget:
+            size_hint: None, None
+            size: self.width, 72
+            pos: 28, 0
+
+            RelativeLayout:
+                id: breakLeverRight
+                pos_hint: {'left': 1, 'top': 1}
+                size: 240, 72
+                pos: 240, 0
+
+                Widget:
+                    id: breakLeverRight_0
+                    pos_hint: {'left': 1, 'top': 1}
+                    size_hint: None, None
+                    size: (186, 72)
+                    canvas:
+                        Color:
+                            rgba: 1, 1, 0, 1
+                        Rectangle:
+                            source: 'assets/img/brake_right@2x.png'
+                            pos: self.pos
+                            size: self.size
+
+                Widget:
+                    id: breakLeverRight_1
+                    pos_hint: {'left': .75, 'top': 1}
+                    size_hint: None, None
+                    size: (186, 72)
+                    canvas:
+                        Color:
+                            rgba: 1, 1, 0, 1
+                        Rectangle:
+                            source: 'assets/img/brake_right@2x.png'
+                            pos: self.pos
+                            size: self.size
+
+                Widget:
+                    id: breakLeverRight_2
+                    pos_hint: {'left': 1, 'top': 1}
+                    size_hint: None, None
+                    size: (186, 72)
+                    canvas:
+                        Color:
+                            rgba: 1, 1, 0, 1
+                        Rectangle:
+                            source: 'assets/img/brake_right@2x.png'
+                            pos: self.pos
+                            size: self.size
+
+                Widget:
+                    id: breakLeverRight_3
+                    pos_hint: {'left': 1, 'top': 1}
+                    size_hint: None, None
+                    size: (186, 72)
+                    canvas:
+                        Color:
+                            rgba: 1, 1, 0, 1
+                        Rectangle:
+                            source: 'assets/img/brake_right@2x.png'
+                            pos: self.pos
+                            size: self.size
+
+            RelativeLayout:
+                id: breakLeverLeft
+                pos_hint: {'left': 1, 'top': 1}
+                size: 240, 72
+                pos: 0, 0
+
+                Widget:
+                    id: breakLeverLeft_0
+                    pos_hint: {'right': 1, 'top': 1}
+                    size_hint: None, None
+                    size: (186, 72)
+                    canvas:
+                        Color:
+                            rgba: 1, 0, 1, 1
+                        Rectangle:
+                            source: 'assets/img/brake_left@2x.png'
+                            pos: self.pos
+                            size: self.size
+
+                Widget:
+                    id: breakLeverLeft_1
+                    pos_hint: {'right': 3/4, 'top': 1}
+                    size_hint: None, None
+                    size: (186, 72)
+                    canvas:
+                        Color:
+                            rgba: 1, 1, 0, 1
+                        Rectangle:
+                            source: 'assets/img/brake_left@2x.png'
+                            pos: self.pos
+                            size: self.size
+
+                Widget:
+                    id: breakLeverLeft_2
+                    pos_hint: {'right': 1/2, 'top': 1}
+                    size_hint: None, None
+                    size: (186, 72)
+                    canvas:
+                        Color:
+                            rgba: 1, 1, 0, 1
+                        Rectangle:
+                            source: 'assets/img/brake_left@2x.png'
+                            pos: self.pos
+                            size: self.size
+
+                Widget:
+                    id: breakLeverLeft_3
+                    pos_hint: {'right': 1/4, 'top': 1}
+                    size_hint: None, None
+                    size: (186, 72)
+                    canvas:
+                        Color:
+                            rgba: 1, 1, 0, 1
+                        Rectangle:
+                            source: 'assets/img/brake_left@2x.png'
+                            pos: self.pos
+                            size: self.size
+
+            RelativeLayout:
+                id: breakLeverRight
+                size: 480, 72
+                pos: 0, 0
+
+                Widget:
+                    id: breaklever
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    size_hint: None, None
+                    size: 188, 32
+                    pos: 0, 0
+                    opacity: 0
+                    canvas:
+                        Color:
+                            rgba: 1, 1, 1, 1
+                        Rectangle:
+                            source: 'assets/img/brake_message@2x.png'
+                            pos: self.pos
+                            size: self.size
