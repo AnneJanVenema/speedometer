@@ -1,4 +1,3 @@
-# Set window size
 import kivy
 kivy.require('1.9.0')
 from kivy.config import Config
@@ -169,6 +168,7 @@ class brakeLever(FloatLayout):
 
 
 class cittaApp(FloatLayout, App):
+    print(kivy.__version__)
     def build(self):
         inputDisplay = speedoMeter()
         inputDisplay2 = brakeLever()
