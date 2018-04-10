@@ -1,6 +1,6 @@
+# Set window size
 import kivy
-from kivy.clock import Clock
-# kivy.require('1.9.0')
+kivy.require('1.9.0')
 from kivy.config import Config
 Config.set('graphics', 'width', '480')
 Config.set('graphics', 'height', '800')
@@ -19,6 +19,7 @@ from kivy.uix.slider import Slider
 
 from kivy.animation import Animation
 from kivy.properties import ListProperty, NumericProperty
+# from kivy.clock import Clock
 from kivy.graphics import Color, Rectangle
 from kivy.metrics import dp, sp
 from kivy.core.window import Window
@@ -43,7 +44,7 @@ class speedoMeter(FloatLayout):
 
     def __init__(self, **kwargs):
         super(speedoMeter, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, 0.2)
+        self.update, 0.2
  
     # def func(self):
     #     self.ids['asdasdasd'].col = (0,1,0,1)
@@ -130,7 +131,7 @@ class brakeLever(FloatLayout):
 
     def __init__(self, **kwargs):
         super(brakeLever, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, 1)
+        self.update, 1
 
     def brakeRight(self, brakeNum):
         breakLeverID = 'breakLeverRight_'+ str(brakeNum)
