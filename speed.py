@@ -58,7 +58,7 @@ import subprocess
 res = subprocess.check_output(["iwgetid", "-r"])
 for line in res.splitlines():
     # process the output line by line
-    print('asdasd')
+    print(res)
 
 class speedoMeter(FloatLayout):
 
