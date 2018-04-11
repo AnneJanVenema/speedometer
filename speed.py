@@ -41,6 +41,18 @@ speeDir = True
 leverLeft = True
 second = 'asd'
 
+from subprocess import check_output
+
+scanoutput = check_output(["iwlist", "wlan0", "scan"])
+
+ssid = "WiFi not found"
+
+for line in scanoutput.split():
+  line = line.decode("utf-8")
+  if line[:5]  == "ESSID":
+    ssid = line.split('"')[1]
+
+
 
 class speedoMeter(FloatLayout):
 
@@ -132,7 +144,7 @@ class brakeLever(FloatLayout):
         Clock.schedule_interval(self.update, 1)
 
     def brakeRight(self, status):
-        for i in range(1,4):
+        for i in range(1,5):
             breakLeverID = 'breakLeverRight_'+ str(i)
             breakLeverAnim = Animation(duration = 0.1 - .025 * i) 
             if status == 'up':
@@ -142,7 +154,7 @@ class brakeLever(FloatLayout):
             breakLeverAnim.start(self.ids[breakLeverID])
 
     def brakeLeft(self, status):
-        for i in range(1,4):
+        for i in range(1,5):
             breakLeverID = 'breakLeverLeft_'+ str(i)
             breakLeverAnim = Animation(duration = 0.1 - .025 * i) 
             if status == 'up':
