@@ -36,6 +36,18 @@ Window.clearcolor = (0, 0, 0, 1)
 from kivy.lang import Builder
 Builder.load_file('assets/kv/speed.kv')
 
+from kivy.core.text import LabelBase
+KIVY_FONTS = [
+    {
+        "name": "InterUI",
+        "fn_regular": "assets/fonts/Inter-UI-Regular.otf",
+        "fn_bold": "assets/fonts/Inter-UI-Bold.otf",
+    }
+]
+    
+for font in KIVY_FONTS:
+    LabelBase.register(**font)
+
 speed = 1
 speeDir = True
 leverLeft = True
@@ -51,7 +63,7 @@ class statusBar(FloatLayout):
 
     def __init__(self, **kwargs):
         super(statusBar, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, 1)
+        Clock.schedule_interval(self.update, 10)
 
     def update(self, dt):
         var1 = subprocess.check_output(["iwgetid", "-r"]).decode("utf-8")
