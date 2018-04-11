@@ -70,6 +70,7 @@ class statusBar(FloatLayout):
     def update(self, dt):
         var1 = subprocess.check_output(["iwgetid", "-r"]).decode("utf-8")
         self.ids['statusConnection'].text = str(var1)
+        self.ids['statusConnection'].pos_hint = {'center_y': .5, 'center_x': .5}
         self.ids['statusTime'].text = time.strftime('%H:%M')
 
 

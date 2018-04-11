@@ -10,7 +10,7 @@
         pos: (0, 0) # fix later, ok?
         canvas:
             Color:
-                rgba: 1, 0.949, 0.796, .15
+                rgba: 1, 0.949, 0.796, .05
             Rectangle:
                 # source: 'assets/img/brake_right@2x.png'
                 pos: self.pos
@@ -22,8 +22,9 @@
             font_name: 'InterUI'
             bold: True
             font_size: 28
-            pos_hint: {'center_x':  .5, 'center_y': .5}
-            size_hint: None, None
+            pos_hint: {'center_y': .5, 'center_x': .5}
+            pos: (0, 0)
+            size_hint: (None, None)
 
         Label:
             id: statusTime
@@ -31,8 +32,9 @@
             font_name: 'InterUI'
             bold: True
             font_size: 28
-            pos_hint: {'center_y': .5}
-            size_hint: None, None
+            pos_hint: {'left': 1, 'center_y': .5}
+            pos: (15, 0)
+            size_hint: (None, None)
 
         # Widget:
         #     id: connectionStatus
