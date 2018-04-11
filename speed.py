@@ -48,7 +48,7 @@ class speedoMeter(FloatLayout):
 
     def __init__(self, **kwargs):
         super(speedoMeter, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, 0.1/2)
+        Clock.schedule_interval(self.update, 1/4)
  
     def func(self):
         self.ids['asdasdasd'].col = (0,1,0,1)
@@ -129,7 +129,7 @@ class brakeLever(FloatLayout):
 
     def __init__(self, **kwargs):
         super(brakeLever, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, 1/2)
+        Clock.schedule_interval(self.update, 1)
 
     def brakeRight(self, status):
         for i in range(1,4):
@@ -146,7 +146,7 @@ class brakeLever(FloatLayout):
             breakLeverID = 'breakLeverLeft_'+ str(i)
             breakLeverAnim = Animation(duration = 0.1 - .025 * i) 
             if status == 'up':
-                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4)-.11 }, opacity = 1, duration = .22, t='in_out_quint') 
+                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4)-.11 }, opacity = 1, duration = .22, t='in_out_quint')
             if status == 'down':
                 breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4) }, opacity = 0, duration = .22, t='in_out_quint')
             breakLeverAnim.start(self.ids[breakLeverID])
