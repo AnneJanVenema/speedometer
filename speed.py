@@ -42,7 +42,7 @@ leverLeft = True
 second = 'asd'
 
 import subprocess
-var1 = subprocess.check_output(["iwgetid", "-r"])
+
 
 # Bottom statusbar
 class statusBar(FloatLayout):
@@ -53,6 +53,7 @@ class statusBar(FloatLayout):
         Clock.schedule_interval(self.update, 1)
 
     def update(self, dt):
+        # var1 = subprocess.check_output(["iwgetid", "-r"])
         self.ids['connectionStatus'].text = var1
 
 
