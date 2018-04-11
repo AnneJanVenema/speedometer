@@ -2,8 +2,12 @@
 import kivy
 kivy.require('1.9.0')
 from kivy.config import Config
+
 Config.set('graphics', 'width', '480')
 Config.set('graphics', 'height', '800')
+
+Config.set('graphics', 'width', '240')
+Config.set('graphics', 'height', '400')
  
 from kivy.app import App
 
@@ -44,7 +48,7 @@ class speedoMeter(FloatLayout):
 
     def __init__(self, **kwargs):
         super(speedoMeter, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, 0.1)
+        Clock.schedule_interval(self.update, 0.1/2)
  
     def func(self):
         self.ids['asdasdasd'].col = (0,1,0,1)
@@ -63,8 +67,11 @@ class speedoMeter(FloatLayout):
             with self.canvas:
                 Color(rgba=([1, 0, 0, 1]))
 
-        if speed > 20:
+        if speed > 60:
             self.color = [1,0,0]
+
+        else:
+            self.color = [1,1,1]
 
 
         if speed > 98:
@@ -133,43 +140,28 @@ class brakeLever(FloatLayout):
         super(brakeLever, self).__init__(**kwargs)
         Clock.schedule_interval(self.update, 1/2)
 
-    def brakeRight(self, brakeNum):
-        if brakeNum == 4:
-            breakLeverAnim = Animation(x = 213+30, duration = .2, t = 'in_out_quint') + Animation(x = 213, duration = .2, t = 'out_back')
-            breakLeverAnim.start(self.ids.breakLeverRight)
-
-        else:
-            breakLeverID = 'breakLeverRight_'+ str(brakeNum)
-            # self.ids[breakLeverID].x = 60 * brakeNum
-            breakLeverAnim = Animation(duration = .05 * brakeNum) + Animation(x = self.ids[breakLeverID].x+60, opacity = 1, duration = .5, t='in_out_quint') + Animation(x = 60 * brakeNum, opacity = .4, duration = .3, t='in_out_quint')
+    def brakeRight(self):
+        for i in range(1,4):
+            breakLeverID = 'breakLeverRight_'+ str(i)
+            breakLeverAnim = Animation(duration = 0.1 - .025 * i) 
+            breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': (i/4)+.22 }, opacity = 1, duration = .22, t='in_out_quint') 
+            breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': (i)/4 }, opacity = .2, duration = .22, t='in_out_quint')
             breakLeverAnim.start(self.ids[breakLeverID])
 
-    def brakeLeft(self, brakeNum):
-        breakLeverID = 'breakLeverLeft_'+ str(brakeNum)
-        if brakeNum == 4:
-            breakLeverAnim = Animation(x = -93-30, duration = .2, t = 'in_out_quint') + Animation(x = -93, duration = .2, t = 'out_back')
-            breakLeverAnim.start(self.ids.breakLeverLeft)
-
-        else:
-            # self.ids[breakLeverID].x = 60 * brakeNum
-            breakLeverAnim = Animation(duration = .05 * brakeNum) + Animation(x = self.ids[breakLeverID].x-60, opacity = 1, duration = .3, t='in_out_quint') + Animation(x = 60 * brakeNum, opacity = .4, duration = .2, t='in_out_quint')
+    def brakeLeft(self):
+        for i in range(1,4):
+            breakLeverID = 'breakLeverLeft_'+ str(i)
+            breakLeverAnim = Animation(duration = 0.1 - .025 * i) 
+            breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4)-.22 }, opacity = 1, duration = .22, t='in_out_quint') 
+            breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4) }, opacity = .2, duration = .22, t='in_out_quint')
             breakLeverAnim.start(self.ids[breakLeverID])
 
 
     def update(self, dt):
+        if speed > 60: #if GPIO.input(leverLeft) == True:
+            self.brakeRight()
+            self.brakeLeft()
 
-        self.brakeRight(0)
-        self.brakeLeft(0)
-        self.brakeRight(1)
-        self.brakeLeft(1)
-        self.brakeLeft(2)
-        self.brakeRight(2)
-        self.brakeRight(3)
-        self.brakeLeft(3)
-        self.brakeRight(4)
-        self.brakeLeft(4)
-
-        if speed > 20: #if GPIO.input(leverLeft) == True:
             anim = Animation(y = 0, opacity = 1, duration = .5, t='in_out_quint')
             anim.start(self.ids['breakLeverMessage'])
 
