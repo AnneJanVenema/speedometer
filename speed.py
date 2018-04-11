@@ -52,7 +52,7 @@ for line in scanoutput.split():
   if line[:5]  == "ESSID":
     ssid = line.split('"')[1]
 
-
+print(ssid)
 
 class speedoMeter(FloatLayout):
 
