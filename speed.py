@@ -40,20 +40,21 @@ speed = 1
 speeDir = True
 leverLeft = True
 second = 'asd'
+var1 = 'No connection'
 
 import subprocess
 
 
 # Bottom statusbar
 class statusBar(FloatLayout):
-    var1 = 'No connection'
+    # global var1
 
     def __init__(self, **kwargs):
         super(statusBar, self).__init__(**kwargs)
         Clock.schedule_interval(self.update, 1)
 
     def update(self, dt):
-        # var1 = subprocess.check_output(["iwgetid", "-r"])
+        var1 = subprocess.check_output(["iwgetid", "-r"])
         self.ids['connectionStatus'].text = var1
 
 
