@@ -55,6 +55,7 @@ class statusBar(FloatLayout):
 
     def update(self, dt):
         var1 = subprocess.check_output(["iwgetid", "-r"])
+        var1.decode("utf-8")
         self.ids['connectionStatus'].text = str(var1)
 
 
