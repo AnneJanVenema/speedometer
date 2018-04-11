@@ -85,11 +85,11 @@ class speedoMeter(FloatLayout):
             with self.canvas:
                 Color(rgba=([1, 0, 0, 1]))
 
-        if speed > 40:
-            self.color = [1,0,0]
+        # if speed > 40:
+        #     self.color = [1,0,0]
 
-        else:
-            self.color = [1,1,1]
+        # else:
+        #     self.color = [1,1,1]
 
         if speed > 98:
             speed = 1
