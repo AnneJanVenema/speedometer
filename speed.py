@@ -41,24 +41,22 @@ speeDir = True
 leverLeft = True
 second = 'asd'
 
-# from subprocess import check_output
-
-# scanoutput = check_output(["iwlist", "wlan0", "scan"])
-
-# ssid = "WiFi not found"
-
-# for line in scanoutput.split():
-#   line = line.decode("utf-8")
-#   if line[:5]  == "ESSID":
-#     ssid = line.split('"')[1]
-
-# print(ssid)
-
 import subprocess
-res = subprocess.check_output(["iwgetid", "-r"])
-for line in res.splitlines():
-    # process the output line by line
-    print(res)
+
+
+# Bottom statusbar
+class statusBar(FloatLayout):
+    var1 = 'No connection'
+
+    def __init__(self, **kwargs):
+        super(statusBar, self).__init__(**kwargs)
+        Clock.schedule_interval(self.update, 1)
+
+    def update(self, dt):
+        var1 = subprocess.check_output(["iwgetid", "-r"])
+        self.ids['connectionStatus'].text = var1
+
+
 
 class speedoMeter(FloatLayout):
 
@@ -197,10 +195,12 @@ class cittaApp(FloatLayout, App):
     def build(self):
         inputDisplay = speedoMeter()
         inputDisplay2 = brakeLever()
+        inputDisplay3 = statusBar()
         layout = FloatLayout()
 
         layout.add_widget(inputDisplay)
         layout.add_widget(inputDisplay2)
+        layout.add_widget(inputDisplay3)
         return layout
 
 
