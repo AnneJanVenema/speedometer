@@ -52,10 +52,11 @@ speed = 1
 speeDir = True
 leverLeft = True
 second = 'asd'
-var1 = 'No connection'
+var1 = 'Wi-Fi'
 
 import subprocess
 
+import time
 
 # Bottom statusbar
 class statusBar(FloatLayout):
@@ -63,11 +64,13 @@ class statusBar(FloatLayout):
 
     def __init__(self, **kwargs):
         super(statusBar, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, 10)
+        Clock.schedule_interval(self.update, 5)
+        self.ids['statusTime'].text = time.strftime('%H:%M')
 
     def update(self, dt):
         var1 = subprocess.check_output(["iwgetid", "-r"]).decode("utf-8")
-        self.ids['connectionStatus'].text = str(var1)
+        self.ids['statusConnection'].text = str(var1)
+        self.ids['statusTime'].text = time.strftime('%H:%M')
 
 
 
