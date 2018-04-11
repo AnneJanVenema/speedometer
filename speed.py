@@ -41,18 +41,24 @@ speeDir = True
 leverLeft = True
 second = 'asd'
 
-from subprocess import check_output
+# from subprocess import check_output
 
-scanoutput = check_output(["iwlist", "wlan0", "scan"])
+# scanoutput = check_output(["iwlist", "wlan0", "scan"])
 
-ssid = "WiFi not found"
+# ssid = "WiFi not found"
 
-for line in scanoutput.split():
-  line = line.decode("utf-8")
-  if line[:5]  == "ESSID":
-    ssid = line.split('"')[1]
+# for line in scanoutput.split():
+#   line = line.decode("utf-8")
+#   if line[:5]  == "ESSID":
+#     ssid = line.split('"')[1]
 
-print(ssid)
+# print(ssid)
+
+import subprocess
+res = subprocess.check_output(["iwgetid", "-r"])
+for line in res.splitlines():
+    # process the output line by line
+    print('asdasd')
 
 class speedoMeter(FloatLayout):
 
@@ -60,7 +66,7 @@ class speedoMeter(FloatLayout):
 
     def __init__(self, **kwargs):
         super(speedoMeter, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, 1/4)
+        Clock.schedule_interval(self.update, 1/20)
  
     def func(self):
         self.ids['asdasdasd'].col = (0,1,0,1)
@@ -145,7 +151,8 @@ class brakeLever(FloatLayout):
 
     def brakeRight(self, status):
         for i in range(1,5):
-            breakLeverID = 'breakLeverRight_'+ str(i)
+            inverted = 5-i
+            breakLeverID = 'breakLeverRight_'+ str(inverted)
             breakLeverAnim = Animation(duration = 0.1 - .025 * i) 
             if status == 'up':
                 breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': (i/4)+.11 }, opacity = 1, duration = .22, t='in_out_quint') 
@@ -155,12 +162,13 @@ class brakeLever(FloatLayout):
 
     def brakeLeft(self, status):
         for i in range(1,5):
-            breakLeverID = 'breakLeverLeft_'+ str(i)
+            inverted = 5-i
+            breakLeverID = 'breakLeverLeft_'+ str(inverted)
             breakLeverAnim = Animation(duration = 0.1 - .025 * i) 
             if status == 'up':
                 breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4)-.11 }, opacity = 1, duration = .22, t='in_out_quint')
             if status == 'down':
-                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4) }, opacity = 0, duration = .22, t='in_out_quint')
+                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4) }, opacity = 1-(i/8), duration = .22, t='in_out_quint')
             breakLeverAnim.start(self.ids[breakLeverID])
 
     def brakeMessage(self, status):
