@@ -179,7 +179,7 @@ class brakeLever(FloatLayout):
             if status == 'up':
                 breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4)-.11 }, opacity = 1, duration = .22, t='in_out_quint')
             if status == 'down':
-                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4) }, opacity = 1-(i/8), duration = .22, t='in_out_quint')
+                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4) }, opacity = 0, duration = .22, t='in_out_quint')
             breakLeverAnim.start(self.ids[breakLeverID])
 
     def brakeMessage(self, status):
