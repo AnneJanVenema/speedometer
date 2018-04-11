@@ -54,8 +54,7 @@ class statusBar(FloatLayout):
         Clock.schedule_interval(self.update, 1)
 
     def update(self, dt):
-        var1 = subprocess.check_output(["iwgetid", "-r"])
-        var1.decode("utf-8")
+        var1 = subprocess.check_output(["iwgetid", "-r"]).decode("utf-8")
         self.ids['connectionStatus'].text = str(var1)
 
 
