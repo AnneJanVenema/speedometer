@@ -168,11 +168,11 @@ class brakeLever(FloatLayout):
         for i in range(1,5):
             inverted = 5-i
             breakLeverID = 'breakLeverRight_'+ str(inverted)
-            breakLeverAnim = Animation(duration = 0.1 - .025 * i) 
+            breakLeverAnim = Animation(duration = 0.2 - .05 * i) 
             if status == 'up':
                 breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': (i/4)+.11 }, opacity = 1, duration = .22, t='in_out_quint') 
             if status == 'down':
-                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': (i)/4 }, opacity = 0, duration = .22, t='in_out_quint')
+                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': -(i/4)*2 }, opacity = 0, duration = .22, t='in_out_quint')
             breakLeverAnim.start(self.ids[breakLeverID])
 
     def brakeLeft(self, status):
