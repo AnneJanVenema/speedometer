@@ -68,7 +68,7 @@ class statusBar(FloatLayout):
         self.ids['statusTime'].text = time.strftime('%H:%M')
 
     def update(self, dt):
-        var1 = subprocess.check_output(["iwgetid", "-r"]).decode("utf-8")
+        # var1 = subprocess.check_output(["iwgetid", "-r"]).decode("utf-8")
         self.ids['statusConnection'].text = str(var1)
         # self.ids['statusConnection'].pos_hint = {'center_y': .5, 'center_x': .5}
         self.ids['statusTime'].text = time.strftime('%H:%M')
@@ -162,29 +162,36 @@ class brakeLever(FloatLayout):
 
     def __init__(self, **kwargs):
         super(brakeLever, self).__init__(**kwargs)
-        Clock.schedule_interval(self.update, 1)
+        Clock.schedule_interval(self.update, 1/1.5)
 
     def brakeRight(self, status):
         for i in range(1,5):
             inverted = 5-i
             breakLeverID = 'breakLeverRight_'+ str(inverted)
             breakLeverAnim = Animation(duration = 0.2 - .05 * i) 
+            self.ids[breakLeverID].pos_hint = { 'center_y': .5, 'x': (i/4)+.3 }
             if status == 'up':
-                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': (i/4)+.11 }, opacity = 1, duration = .22, t='in_out_quint') 
+                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': (i/4)+.16 }, opacity = 1, duration = .300, t='out_back')
+                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': (i/4) }, opacity = 0.0, duration = .150, t='out_back')
+                # breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': (i/4) }, opacity = 0, duration = .22, t='in_out_quint')
             if status == 'down':
-                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': -(i/4)*2 }, opacity = 0, duration = .22, t='in_out_quint')
+                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'x': (i/4) }, opacity = 0, duration = .22, t='in_out_quint')
             breakLeverAnim.start(self.ids[breakLeverID])
 
     def brakeLeft(self, status):
         for i in range(1,5):
             inverted = 5-i
             breakLeverID = 'breakLeverLeft_'+ str(inverted)
-            breakLeverAnim = Animation(duration = 0.1 - .025 * i) 
+            breakLeverAnim = Animation(duration = 0.1 - .025 * i)
+            self.ids[breakLeverID].pos_hint = { 'center_y': .5, 'center_x': 1-(i/4)-.3 }
             if status == 'up':
-                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4)-.11 }, opacity = 1, duration = .22, t='in_out_quint')
+                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4)-.16 }, opacity = 1, duration = .300, t='out_back')
+                breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4) }, opacity = 0.0, duration = .150, t='out_back')
+                # breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4) }, opacity = 0, duration = .22, t='in_out_quint')
+                breakLeverAnim.start(self.ids[breakLeverID])
             if status == 'down':
                 breakLeverAnim += Animation(pos_hint = { 'center_y': .5, 'center_x': 1-(i/4) }, opacity = 0, duration = .22, t='in_out_quint')
-            breakLeverAnim.start(self.ids[breakLeverID])
+                breakLeverAnim.start(self.ids[breakLeverID])
 
     def brakeMessage(self, status):
         if status == 'up':
