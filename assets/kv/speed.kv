@@ -6,7 +6,7 @@
 <statusBar>
     RelativeLayout:
         size_hint: None, None
-        size: (480, 68)
+        size: (480, 68) 
         pos: (0, 0) # fix later, ok?
         canvas:
             Color:
@@ -22,8 +22,8 @@
             font_name: 'InterUI'
             bold: True
             font_size: 28
-            pos_hint: {'center_y': .5, 'center_x': .5}
-            pos: (0, 0)
+            pos_hint: {'bottom': 0, 'center_x': .5}
+            pos: (0, -15)
             size_hint: (None, None)
 
         Label:
@@ -32,8 +32,18 @@
             font_name: 'InterUI'
             bold: True
             font_size: 28
-            pos_hint: {'left': 1, 'center_y': .5}
-            pos: (15, 0)
+            pos_hint: {'bottom': 0, 'left': 1}
+            pos: (15, -15)
+            size_hint: (None, None)
+
+        Label:
+            id: statusBattery
+            text: '100%'
+            font_name: 'InterUI'
+            bold: True
+            font_size: 28
+            pos_hint: {'bottom': 0, 'right': 1}
+            pos: (15, -15)
             size_hint: (None, None)
 
 <speedoMeter>
