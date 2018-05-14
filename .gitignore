@@ -12,7 +12,7 @@
 *.vi
 *~
 
-# System stuff
+# System folders and stuff
 *.esproj
 *.sass-cache
 *.sublime-project
