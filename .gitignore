@@ -1,6 +1,6 @@
 #.gitignore
 
-# Ignore extensions
+# Ignore some extensions
 *.diff
 *.orig
 *.err
